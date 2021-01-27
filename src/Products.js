@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, useRouteMatch } from "react-router-dom";
+import { Link, Route, useParams, useRouteMatch } from "react-router-dom";
 import Product from "./Product";
 
 const Products = () => {
@@ -35,8 +35,12 @@ const Products = () => {
   ];
 
   const { url } = useRouteMatch();
-
+  console.log(url);
   /* Create an array of `<li>` items for each product */
+  //  nhan danh sach Product
+  // duyet qua tung product
+  // tao the Link
+  // Link nay co path 
   const linkList = productData.map((product) => {
     return (
       <li key={product.id}>
@@ -63,7 +67,9 @@ const Products = () => {
           </ul>
         </div>
       </div>
-
+      <Route path={`${url}/:productId`}>
+          <Product data={productData}/>
+      </Route>
     
     </div>
   );
